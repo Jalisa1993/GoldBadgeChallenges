@@ -8,19 +8,21 @@ namespace Challenge_2
 {
     class ClaimRepository
     {
-        Queue<Claim> _queue = new Queue<Claim>();
+        Queue<Claim> _claimQueue = new Queue<Claim>();
 
         public void AddClaimQueue(Claim claim)
         {
-            _queue.Enqueue(claim);
+            _claimQueue.Enqueue(claim);
         }
         public Queue<Claim> GetClaimQueue()
         {
-            return _queue;
+            return _claimQueue;
         }
-        public Queue<Claim> TakeCareOfNextClaims()
+       
+        public Queue<Claim> RemoveClaim()
         {
-            return _queue;
+            _claimQueue.Dequeue();
+            return _claimQueue;
         }
     }
 }

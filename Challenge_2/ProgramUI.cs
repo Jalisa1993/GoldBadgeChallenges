@@ -17,7 +17,7 @@ namespace Challenge_2
             {
                 Console.WriteLine("Choose an action:" +
                     "\n1. See all claims" +
-                    "\n2. Take care of next claim " +
+                    "\n2. Resolve a claim " +
                     "\n3. Enter a new claim" +
                     "\n4. Exit");
                 int response = int.Parse(Console.ReadLine());
@@ -27,7 +27,7 @@ namespace Challenge_2
                         SeeAllClaims();
                         break;
                     case 2:
-                        TakeCareOfNextClaim();
+                        ResolveClaim();
                         break;
                     case 3:
                         CreateClaimItem();
@@ -73,41 +73,35 @@ namespace Challenge_2
                 newClaim.IsValid = false;
             }
             _claimRepo.AddClaimQueue(newClaim);
-
-        }
-
-        private void TakeCareOfNextClaim()
-        {
-            throw new NotImplementedException();
         }
 
         private void SeeAllClaims()
         {
-            Console.WriteLine("ClaimID" + "\t Type" + "\tDescription" + "\tAmount" + "\tDateOfIncident" + "\t\tDateOfClaim" + "\t\tIsValid");
+            Console.WriteLine("ClaimID" + "\t Type" + "\tDescription" + "\tAmount" + "\tDateOfIncident" + "\t\t\tDateOfClaim" + "\t\t\tIsValid");
             foreach (Claim claims in _claimRepo.GetClaimQueue())
             {
                 Console.WriteLine($"{claims.ClaimID}" +
                         $"\t{claims.ClaimType}" +
                         $"\t{claims.ClaimDescription}" +
                         $"\t\t{claims.ClaimAmount}" +
-                        $"\t{claims.DateOfIncident}" +
-                        $"\t{claims.DateOfClaim}" +
+                        $"\t{claims.DateOfIncident.ToShortDateString()}" +
+                        $"\t{claims.DateOfClaim.ToShortDateString()}" +
                         $"\t{claims.IsValid}");
             }
             Console.ReadLine();
         }
-        private void ResolveClaims()
+        private void ResolveClaim()
         {
-            Claim claimResolved = new Claim();
-            Console.WriteLine("Want to resolve your claim?  (y/n)");
-            var input = Console.ReadLine();
-           // if (ResolveClaims == "y")
+            Console.WriteLine("Do you want to resolve your claim?  (y/n)");
+            string resolvingClaim = Console.ReadLine();
+            _claimRepo.RemoveClaim();
+            if (resolvingClaim == "y")
             {
-                claimResolved.IsValid = true;
+                _claimRepo.RemoveClaim();
             }
-           // else
+             else
             {
-                claimResolved.IsValid = false;
+                _claimRepo.GetClaimQueue();
             }
 
         }

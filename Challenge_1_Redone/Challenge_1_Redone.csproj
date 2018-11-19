@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9F059205-EB6F-456E-AD69-060C259678EF}</ProjectGuid>
+    <ProjectGuid>{C4791EE2-A0E0-48D0-95AE-C51726F83550}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Challenge_3</RootNamespace>
-    <AssemblyName>Challenge_3</AssemblyName>
+    <RootNamespace>Challenge_1_Redone</RootNamespace>
+    <AssemblyName>Challenge_1_Redone</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,17 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OutingRepository.cs" />
-    <Compile Include="Outings.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="MenuRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgramUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Outing.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
